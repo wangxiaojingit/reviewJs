@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任意数求和</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+   /*
+   * 写一个slice函数，能够克隆一个数组
+   *
+   * */
+
+   Array.prototype.mySlice=function(){
+        var  ary=[];
+        for(var i=0;i<this.length;i++){
+           ary.push(this[i]);
+        }
+        return ary;
+   }
+   var oldAry= [1,2,3]
+   var newAry=oldAry.slice()
+
+/* 把类数组转化为数组的方法*/
+
+   function toArray (){
+       var ary=[];
+       for(var i=0;i<arguments.length;i++){
+           ary.push(arguments[i])
+       }
+       return ary;
+   }
+
+   toArray(1,2,3)
+
+    /*
+    * 对比slice方法和转化为类数组的方法，可以发现只有arguments和this不同，其它的都相同，     所以转化为类数组的方法，我们可以进行简化
+    *
+    * */
+
+
+
+
+    function average (){
+       let ary= [].slice.call(arguments)
+        ary.sort(function(a,b){
+            return a-b;
+        }).pop();
+        ary.shift();
+        var total= eval(ary.join("+"));
+        return (total/ary.length).toFixed(2);
+    }
+
+    console.log(average(8.0,9.0,6.0,7))
+</script>

@@ -10,13 +10,12 @@
 </html>
 <script type="text/javascript">
     function Foo(){
-       var getName=function(){
+        getName=function(){
             console.log(1)
         }
         return this;
     }
     Foo.getName=function(){
-        debugger;
         console.log(2)
     }
     Foo.prototype.getName=function(){
@@ -30,10 +29,15 @@
     }
 //    Foo.getName();// 2
 //    getName();   //4
-//    Foo().getName();//4
-//    getName();//4
+   Foo().getName();//1
+   getName();//1
 
-//    new Foo.getName(); //2
- //  new Foo().getName();//3
-    new new Foo().getName();//3
+   new Foo.getName(); //2
+   new Foo().getName();//3
+   new new Foo().getName();//3
+// 后面三个主要是顺序的问题
+// new (Foo.getName)()
+// (new Foo()).getName()
+//  new [(new Foo()).getName]()
+
 </script>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary=[5,3]
+    ary.sort(function(a,b){
+        return a-b
+    })
+    alert(ary) //[3,5]  a-b>0 就交换位置
+
+    var ary1=[3,5]
+    ary1.sort(function(a,b){
+        return a-b
+    })
+    alert(ary1) //[3,5]    a-b<0 就不交换位置
+
+
+
+    var ary2=[3,5]
+    ary2.sort(function(a,b){
+        return b-a
+    })
+    alert(ary2) //[5,3]  b-a>0 就交换位置
+
+
+    var ary3=[5,3]
+    ary3.sort(function(a,b){
+        return b-a
+    })
+    alert(ary3) //[5,3]  b-a<0 不交换位置
+
+
+    /*
+     利用sort对数组进行排序的两种情况：
+    * 1、利用sort对数组进行排序的时候，retun a-b 或者return b-a
+    * 只要值是大于0的才交换位置，（小于0不交换）如果return a-b的值大于0，（a的值大，b的值小），       交换位置之后就是b，a 就是升序
+    *
+    * 如果return b-a的值大于0，（a的值小，b的值大）交换位置之后，就是b，a，就是降序
+    *
+    * 2、第二种，如果直接返回一个数值，如果这个数值>0,顺序不变，如果这个数值<0 就交换位置
+    *
+    * */
+
+      var ary5=[8,9];
+      ary5.sort((a,b)=>{
+          return 1
+      })
+      console.log(ary5); //[8,9]
+
+    var ary6=[8,9];
+    ary6.sort((a,b)=>{
+        return -1
+    })
+
+    console.log(ary6) //[9,8]
+</script>

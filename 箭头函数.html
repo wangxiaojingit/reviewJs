@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+   /*箭头函数*/
+//    let total=(x,y)=>{
+//          console.log(x+y)
+//    }
+//   total(1,2)
+   /*
+   * 箭头函数有默认值
+   * */
+    let total=(x=1,y=1)=>{
+        return x+y;
+   }
+   console.log(total())
+    /*
+    * 如果代码块中return了一个值，并且只有一行代码，我们可以省略大括号，和return
+    *
+    * */
+   let total=(x=1,y=1)=> x+y;
+
+
+</script>

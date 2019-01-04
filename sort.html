@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+
+    /*
+
+    * 需求：打乱一个数组
+    *
+    * 原理：利用一个sort，如果返回值<0,就交换位置，如果
+    * n-m: m-n
+    *
+    * -5 到5  Math.random()*(m-n)+n
+    *
+    * */
+
+    var ary=[1,2,3,4,8,18,23];
+    ary.sort((a,b)=>{
+        return Math.random()*10+(-5)
+    })
+    console.log(ary)
+
+
+</script>

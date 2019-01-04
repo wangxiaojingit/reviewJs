@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var a=12,b=13,c=14;
+    function fn(a){
+        console.log(a,b,c);
+        var b=c=a=20;
+        console.log(a,b,c);
+    }
+    fn(a);
+    console.log(a,b,c)
+
+//  14行打印的结果：12，undefined 14
+//  16行打印的结果： 20、20、20
+//  19行打印的结果： 12、13、20
+</script>

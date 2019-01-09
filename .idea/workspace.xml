@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2d617e2-12f0-4c5c-91c6-d010a452091d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/正则/小括号的作用.html" />
+    <list default="true" id="f5a43b91-611f-453d-b4cb-0d6551bb38d1" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/正则/正则匹配有效数字.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/正则/小括号的作用.html" afterPath="$PROJECT_DIR$/正则/小括号的作用.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,41 +20,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="正则的基础知识.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/正则/正则的基础知识.html">
+      <file leaf-file-name="正则匹配有效数字.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/正则/正则匹配有效数字.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="55" column="45" lean-forward="false" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="text.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/正则/text.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="正则的基础知识2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/正则/正则的基础知识2.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="小括号的作用.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/正则/小括号的作用.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            <state relative-caret-position="275">
+              <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -72,10 +45,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/正则/text.html" />
-        <option value="$PROJECT_DIR$/正则/正则的基础知识.html" />
-        <option value="$PROJECT_DIR$/正则/正则的基础知识2.html" />
-        <option value="$PROJECT_DIR$/正则/小括号的作用.html" />
+        <option value="$PROJECT_DIR$/正则/正则匹配有效数字.html" />
       </list>
     </option>
   </component>
@@ -86,10 +56,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="1378" />
-    <option name="height" value="744" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -106,7 +75,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -136,6 +104,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -143,11 +112,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\reviewJs\正则" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -228,20 +192,20 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f2d617e2-12f0-4c5c-91c6-d010a452091d" name="Default" comment="" />
-      <created>1546946925663</created>
+      <changelist id="f5a43b91-611f-453d-b4cb-0d6551bb38d1" name="Default" comment="" />
+      <created>1547040514716</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1546946925663</updated>
-      <workItem from="1546946926917" duration="4298000" />
+      <updated>1547040514716</updated>
+      <workItem from="1547040516086" duration="990000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4298000" />
+    <option name="totallyTimeSpent" value="990000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -273,34 +237,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/正则/正则的基础知识.html">
+    <entry file="file://$PROJECT_DIR$/正则/正则匹配有效数字.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="55" column="45" lean-forward="false" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/正则/text.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/正则/正则的基础知识2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/正则/小括号的作用.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        <state relative-caret-position="275">
+          <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="46" />
           <folding />
         </state>
       </provider>

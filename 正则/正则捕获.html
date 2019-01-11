@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>珠峰培训css</title>
+    <link rel="icon" href="">
+
+</head>
+<body>
+
+</body>
+</html>
+<script>
+  var str="zhufeng2019zhufeng2018zhufeng"
+  var reg=/\d+/;
+  var result=reg.exec(str);
+  /*
+   得到的result是一个数组，第一个值是匹配的值，第二个index是匹配到的内容的第一个索引 第三个是整个str
+  * ["2019", index: 7, input: "zhufeng2019zhufeng2018zhufeng", groups: undefined]
+  *
+  *
+  * */
+  console.log(reg.lastIndex) //0    lastIndex代表的意思就是下次捕获从哪个索引开始
+  result=reg.exec(str);
+  console.log(reg.lastIndex) //0
+  result=reg.exec(str);
+  console.log(reg.lastIndex)
+  reg.lastIndex=10;//无用
+  /*
+  * 当我们的正则不写全局g的时候，无论exec多少次，始终都是从第一个索引开始捕获。即使我们手动的改变也没用，必须是在全局正则上写g才可以
+  *
+  * */
+
+  //当我们在正则上写g的时候，就能多次匹配
+
+  var str2="zhu2019zhu2018"
+  var reg2=/\d+/g;
+  console.log(reg2.lastIndex) //0
+  var result=reg2.exec(str2);
+  console.log(reg2.lastIndex) //7
+  result=reg2.exec(str2);
+  console.log(reg2.lastIndex) //14
+  result=reg2.exec(str2);
+  console.log(reg2.exec(str2))//0  匹配完之后，又重新回到0
+
+
+
+  /*
+  *
+  * 上面手动的不停写exec比较繁琐
+  * 所以自己可以封装一个
+  *
+  * 只要捕获到的结果不为null说明就可以继续捕获
+  *
+  * */
+
+  RegExp.prototype.myExec=function(str){
+    //  如果上面的正则中每有写“g”，每次匹配的时候都只会第一个陷入下面的死循环
+    if(!this.global){
+      // 如果this.global 是false 就是没写
+      return this.exec(str)
+    }
+     var exec=this.exec(str);
+     var result=[];
+     while (exec){
+        result.push(exec[0]);
+        exec=this.exec(str);
+     }
+     return result
+  }
+  var str3="zhu2019zhu2018"
+  var reg3=/\d+/g;
+  var rest= reg3.myExec(str);//["2019", "2018"]
+
+  /*
+  * 那其实js早就给咱们封装好了这个方法，叫match
+  *
+  *
+  *
+  * */
+  var str4="zhu2019zhu2018"
+  var reg4=/\d+/g;
+  console.log(str.match(reg4));//["2019", "2018"]
+</script>

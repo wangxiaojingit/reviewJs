@@ -42,4 +42,4 @@ function getStyle(ele,attr){
    return ele.currentStyle[attr];
 }
 
-getStyle(outer,"width")
+getStyle(outer,"width");

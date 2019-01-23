@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{margin:0;padding:0;}
+        ul,ol{list-style: none;}
+        .clearfix:after{
+            display: block;
+            content:"";
+            visibility: hidden;
+            font-size:0;
+            height:0;
+            clear:both;
+        }
+        .tabBox{
+            width:304px;
+            margin:0 auto;
+        }
+        .tabBox>ul{
+            width:302px;
+            border:1px solid green;
+        }
+        .tabBox>ul>li{
+            width:100px;
+            height:50px;
+            line-height: 50px;
+            border-right:1px solid green;
+            float:left;
+            text-align:center;
+        }
+        .tabBox>ul>li:last-child{
+            border-right:none;
+        }
+        .content{
+            height:200px;
+            line-height:200px;
+            border:1px solid red;
+            border-top:none;
+            text-align:center;
+            display:none;
+        }
+        .tabBox ul .select{
+            background:green;
+            color:#fff;
+        }
+        .tabBox .content.select{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+   <div class="tabBox">
+       <ul class="clearfix">
+           <li class="select">音乐</li>
+           <li>电视剧</li>
+           <li>电影</li>
+       </ul>
+       <div class="content select">音乐</div>
+       <div class="content">电视剧</div>
+       <div class="content">电影</div>
+   </div>
+</body>
+</html>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script>
+    $(function(){
+        $(".tabBox>ul>li").on("click",function(){
+             var index=$(this).index();
+             $(this).addClass("select").siblings().removeClass("select").parent().nextAll("div").eq(index).addClass("select").siblings().removeClass("select")
+
+        })
+    })
+</script>

@@ -14,18 +14,22 @@
  *
  * offsetWidth
  * offsetHeight
- * offsetLeft
- * offsetTop
- * offsetParent
+ * offsetLeft：离参照物的左偏移量
+ * offsetTop：离参照物的上偏移量
+ * offsetParent：参照物
  *
  * 3、scroll: scrollHeight:真实内容的高度+上padding的高度
  *    scrollWidth
  *    scrollHeight
- *    scrollLeft
- *    scrollTop
+ *    scrollLeft:滚动条卷去的宽度
+ *    scrollTop：滚动条卷去的高度
+ *
+ *    scrollTop的最小高度是0，(当滚动条在顶部的时候，没有一点距离)
+ *    scrollTop超过一屏的时候：scrollTop 的值等于下面的
+ *    document.documentElement.scrollHeight||document.body-document.documentElement.clientWidth||document.body.clientWidth
  *
  *
- *
+ *  在13个属性中，只有scrollTop和scrollLeft 是可读的属性，其余的都是可读的。
  *
  *
 * */

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        #container {
+            position: relative;
+        }
+        .box {
+            float: left;
+            padding: 15px 0 0 15px;
+        }
+        .box .box_img {
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 6px #cccccc;
+        }
+        .box_img img {
+            display:block;
+            width: 172px;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div class="box">
+        <div class="box_img">
+            <img src="images/1.jpg">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+    function location(parent, child) {
+          var vparent = document.getElementById(parent);
+          var childArray = getChild(vparent, child);
+          var imgWidth = childArray[0].offsetWidth;
+          var cols = Math.floor(document.documentElement.clientWidth / imgWidth); // 计算每行能容纳多少列
+          vparent.style.cssText = "width : " + imgWidth * cols + "px;margin:0 auto;";
+
+          var boxHeightArray = [];
+          for (var i = 0; i < childArray.length; i++) {
+                if (i < cols) {
+                       boxHeightArray[i] = childArray[i].offsetHeight;
+                    } else {
+                        var minHeight = Math.min.apply(null, boxHeightArray);
+                        var minIndex = getIndex(boxHeightArray, minHeight);
+
+                        childArray[i].style.position = "absolute";
+                        childArray[i].style.top = minHeight + "px";
+                        childArray[i].style.left = childArray[minIndex].offsetLeft + "px";
+                       boxHeightArray[minIndex] = boxHeightArray[minIndex] + childArray[i].offsetHeight;
+            }
+        }
+    }
+</script>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <style>
+        *{margin:0;padding:0}
+        body{background:#eee;}
+        #wrapper{
+            position:relative;
+            margin:0 auto;
+            width:auto;
+        }
+        #wrapper>div{
+            width:200px;
+            padding:10px;
+            box-sizing: border-box;
+            background-color:#fff;
+            float:left;
+            box-shadow:0 0 10px 0 rgba(0,0,0,.6);
+            margin:10px;
+
+        }
+
+        #wrapper img{
+            display: block;
+            width:180px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+   <div id="wrapper">
+           <div>
+               <img src="images/1.jpg" alt="">
+               <p>美女高圆圆1</p>
+           </div>
+           <div>
+               <img src="images/2.jpg" alt="">
+               <p>美女高圆圆2</p>
+           </div>
+           <div>
+               <img src="images/3.jpg" alt="">
+               <p>美女高圆圆2</p>
+           </div>
+           <div>
+               <img src="images/4.jpg" alt="">
+               <p>美女高圆圆4</p>
+           </div>
+           <div>
+               <img src="images/5.jpg" alt="">
+               <p>美女高圆圆4</p>
+           </div>
+           <div>
+               <img src="images/6.jpg" alt="">
+               <p>美女高圆圆4</p>
+           </div>
+           <div>
+               <img src="images/7.jpg" alt="">
+               <p>美女高圆圆4</p>
+           </div>
+           <div>
+               <img src="images/8.jpg" alt="">
+               <p>美女高圆圆4</p>
+           </div>
+
+   </div>
+</body>
+</html>
+<script>
+    window.onload=function(){
+
+        //获取容器的大小
+        var Owrapper=document.getElementById("wrapper");
+        //获取所有的列表个数
+        var items=Owrapper.getElementsByTagName("div");
+        var itemsAry=[].slice.call(items);
+        //获取屏幕的宽度
+        var winW=document.documentElement.clientWidth||document.body.clientWidth;
+        //每一个盒子的大小
+        var itemW=itemsAry[0].offsetWidth;
+        //一个屏幕应该分几列
+        var cols=Math.floor(winW/itemW);
+        var colsAry=[]
+        for(var i=0;i<itemsAry.length;i++){
+            if(i<cols){
+                //如果是在第一行，就把这个值存到数组中
+                colsAry[i]=itemsAry[i].offsetHeight
+            }else{
+                //先获取colsAry 中最低的一列
+                var minHeight=Math.min.apply(null,colsAry);
+                var minIndex=getMindex(colsAry,minHeight);
+                //此时的项就应该是绝对定位，top值就是列中的高度，left值就是列中的任意一个的left值
+                itemsAry[i].style.position="absolute";
+                itemsAry[i].style.top=colsAry[minIndex]+"px";
+                itemsAry[i].style.left=itemsAry[minIndex].offsetLeft+"px";
+                colsAry[minIndex]=colsAry[minIndex]+itemsAry[i].offsetHeight;
+
+
+            }
+        }
+
+    }
+
+    function getMindex(ary,value){
+         for(var i=0;i<ary.length;i++){
+             if(ary[i]==value){
+                 return i;
+             }
+         }
+    }
+
+</script>

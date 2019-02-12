@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div name="hobby">游泳</div>
+    <div name="hobby" id="hobby">游泳</div> -->
+    <div name="hobby" id="hobby">唱歌</div>
+    <div name="hobby" id="hobby">唱歌11</div>
+    <input type="text"  id="hobby" value="唱歌" name="hobby">
+    
+    
+   
+    
+</body>
+</html>
+<script>
+//实现一个$attr(domId,name,value)遍历id是domId，内部属性为name且值为value的元素？
+//==> 在这里需要把12行中普通元素，（除了表单元素），中的innerHTML的内容也当成value（题目特别说明）
+let $attr=(domId,name,value)=>{
+     //=> 第一步先找到所有的元素，然后进行筛选
+     let allElement=document.getElementsByTagName("*");
+     //=> 把类数组转化为数组
+     let allElementAry=[].slice.call(allElement);
+     let getElement=allElementAry.filter(item=>{
+        //   //=> 只获取id 和name值一致的元素,下面这种方法获取到的只有一个表单元素，如果用下面的
+        //   //方式进行获取的时候，只能获取到是表单的元素，其它非表单的元素，即使拥有那个name值也
+        //   //获取不到，所以为了都能获取到可以用getAttribute
+        //   //return  item.id==domId&&item.name==name;
+        //    return  item.id==domId&&item.getAttribute("name")==name
+        //  需求2；
+           return  item.id==domId&&item.getAttribute("name")==name&&(item.value==value||item.innerText==value)
+     })
+     return  getElement; 
+     
+
+}
+//$attr("hobby","hobby","唱歌");
+
+// 数组去重的方法：不改变原来的数组
+Array.prototype.myUnique=function(){
+  //首先不能改变原来的数组，所以先要复制一份
+  let _this=this.slice(0);
+  //遍历克隆的数组，并且用一个空对象存放属性
+  let obj={};
+   for(var i=0;i<_this.length;i++){
+      let item=_this[i];
+      if(typeof obj[item]!="undefined"){
+           /* 
+            _this.splice(i,1);
+            i--; 
+             这样子改变了数组的位置，容易耗内存，所以我们把最后一项放到
+             这个位置，然后删除掉最后一项
+           */ 
+           _this[i]=_this[_this.length-1];
+           _this.length--;
+           i--;
+           continue;//break结束整个循环，continue是结束本次循环，继续下个循环 
+      }
+      obj[item]=true;
+    }
+    return _this;
+} 
+
+let ary1=[1,2,3,1,3,2,4];
+let myNewary=ary1.myUnique();
+console.log(myNewary);
+
+
+
+</script>

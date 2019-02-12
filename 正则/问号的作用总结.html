@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>问号的作用总结</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    /*
+    * 1、做为量词，0-1
+    * 2、放到量词之后，还可以取消贪婪性
+    * 3、?: 只匹配不捕获
+    *
+    * */
+
+    // 第一个作用0-1,下面的意思就是+或者-出现0次或者一次
+    var reg=/([+-])?\d+/
+    // 正则的捕获存在懒惰性，每次捕获，如果不写全局g，就不会捕获后面的，
+    // 正则的捕获还存在贪婪性，例如下面,捕获到的结果是2018，并不是2，那如果想要取消它的贪婪性，我们可以在量词的后面添加？
+
+    var reg2=/\d+/g;
+    var str="zf2018px";
+    var val= reg2.exec(str);
+    console.log(val);//["2018", index: 2, input: "zf2018px", groups: undefined]
+
+    var reg3=/\d+?/g;
+    var str="zf2018px";
+    var val3= reg3.exec(str);
+    console.log(val3); //2
+
+    // 只匹配不捕获
+    var reg4=/\{val:(\d+)\}/g
+    var str4="zf{val:123}px{val:456}";
+    var val4=reg4.exec(str4)
+    console.log(val4);//["{val:123}", "123", index: 2, input: "zf{val:123}px{val:456}", groups: undefined]
+    console.log(RegExp.$1)//123
+    console.log(val4[1])//123
+    /*
+    *
+    * 如果想要只匹配不捕获（）分组中的内容 我们可以加?:
+    * */
+
+    var reg5=/\{val:(?:\d+)\}/g
+    var str4="zf{val:123}px{val:456}";
+    var val5=reg5.exec(str4);
+    console.log(val5) //["{val:123}", index: 2, input: "zf{val:123}px{val:456}", groups: undefined]
+</script>

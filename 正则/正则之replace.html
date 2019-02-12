@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * 想要把str中的zf替换成zfpx
+    * */
+    var str="zf2018zf2019";
+    str=str.replace("zf","zfpx");
+    console.log(str);//zfpx2018zf2019;
+    str.replace("zf","zfpx");
+    console.log(str);//zfpxpx2018zf2019
+    /*
+    * 从上面的例子可以看出， 如果单纯的用上面的方法，并不能达到需求，所以我们可以用改下正则.在真实的项目中个，我们用replace不基于正则是不能替换的
+    * */
+    var str2="zf2018zf2019";
+    str2=str2.replace(/zf/g,"zfpx");
+    console.log(str2);//zfpx2018zfpx2019
+
+</script>

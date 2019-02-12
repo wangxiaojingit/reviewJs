@@ -1,0 +1,36 @@
+*{
+    margin:0;padding:0;
+}
+ul,ol{list-style: none;}
+body{
+    background:darkcyan;
+}
+.imgLists li{
+    width:200px;
+    float:left;
+    margin-left:20px;
+}
+ul{
+
+    box-sizing: border-box;
+}
+ul>li{
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,.8);
+    width:200px;
+
+}
+.imgLists li>a{
+    display: block;
+}
+.imgLists li>a>img{
+    width:100%;
+    display: block;
+
+}
+.message{
+    height:30px;
+    line-height: 30px;
+    background:#fff;
+    text-align: center;
+    font-size:16px;
+}

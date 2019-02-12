@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #outer {
+            width: 200px;
+            height: 200px;
+            background: pink;
+            padding: 20px;
+            border: 10px solid green;
+            margin:0 auto;
+            position:relative;
+        }
+        #center{
+            width:180px;
+            height:180px;
+            border:10px solid green;
+            left: 20px;
+            top: 20px;
+            position: absolute;
+
+        }
+        #inner{
+            width:120px;
+            height:120px;
+            border:10px solid green;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+   <div id="outer">
+       <div id="center">
+           <div id="inner"></div>
+       </div>
+   </div>
+</body>
+</html>
+<script type="text/javascript" src="utils.js"></script>
+<script>
+   /*
+   * offsetParent:参照物
+   * offsetLeft:离参照物的左边的距离，从本身 盒子外边开始到参照物的内边的距离
+   * offsetTop：离参照物的顶部的距离
+   *
+   * */
+   //需求：如何获取一个元素到body的偏移量
+    var inner=document.getElementById("inner");
+//    function offset(ele,attr){
+//        var offsetLeft=ele.offsetLeft;
+//        var offsetTop=ele.offsetTop;
+//        var offsetParent=ele.offsetParent;
+//
+//        while(offsetParent.tagName.toLowerCase()!="body"){
+//            offsetLeft+=offsetParent.clientLeft+offsetParent.offsetLeft;
+//            offsetTop+=offsetParent.clientTop+offsetParent.offsetTop;
+//            offsetParent=offsetParent.offsetParent;
+//        }
+//        return {
+//            offsetLeft,
+//            offsetTop
+//        }
+//
+//    }
+
+   console.log(utils.offset(inner, "offsetLeft").offsetLeft);
+
+
+</script>

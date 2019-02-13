@@ -131,4 +131,72 @@ Array.prototype.myUnique4=function(){
 }
 let ary4=[3,6,8,1,2,2,1,6,8];
 console.log(ary4.myUnique4());
+
+
+//什么是递归？像下面的函数调用自己，让自己执行的时候，又调用了自己的方法，就是
+//递归，但是递归通常都是有判断条件的
+function fn(){
+  fn()
+} 
+fn()
+// 求一个数1-100，求出能同时被3和5整除的所有数字之和
+var total=0;
+for(var i=1;i<=100;i++){
+  if(i%15==0){
+    total+=i;
+  }
+   
+}
+//像上面那种情况比较low，通常我们会用递归
+function fn(n){
+  if(n <=0){
+    return 0;
+  }
+   if(n%15==0){
+      return n+fn(n-1)
+   } 
+   return fn(n-1)
+} 
+
+fn(100)
+//
+function fn(n){
+   if(n>100){
+     return 0;
+   }
+   if(n%15==0){
+      return n+fn(n+1)
+   } 
+   return fn(n+1)
+} 
+fn(1)
+
+// 把多维数组变成一维数组
+// 方法一：
+var ary=[68,[1,[2,3,4,[5,6]]]];
+var aryStr=JSON.stringify(ary);
+aryStr=aryStr.replace(/\[|\]/g,"");//"68,1,2,3,4,5,6"
+aryStr=JSON.parse("["+aryStr+"]");
+//方法二： 用递归的方法，把二维数组变成一维数组
+//循环数组中的每一项，如果此项不是一个对象，我们就把它放到空数组，
+//如果是一个对象，我们就继续再调用这个方法
+var result=[]; 
+function fn(ary){
+   for(let i=0;i<ary.length;i++){
+       var item=ary[i];
+      if(typeof item!="object"){
+          result.push(item);
+      }else{
+        fn(item)
+      }
+   }
+} 
+var ary=[68,[1,[2,3,4,[5,6]]]];
+fn(ary)
+
+
+
+
+
+
 </script>

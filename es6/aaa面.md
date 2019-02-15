@@ -251,8 +251,7 @@ js中有封装、多态、继承
    + call继承
    + 寄生组合继承
    +ES6 中Class类实现继承
-   //=> 原型继承，让子类的原型指向父类的一个实例
-
+   //=========> 1、原型继承，让子类的原型指向父类的一个实例
    function A(){
       this.x=200;
    }
@@ -261,18 +260,160 @@ js中有封装、多态、继承
       getX:function(){
          console.log("x")
       }
-
    } 
-
    function B(){
       this.y=100;
    }
-  
-  
 //子类的原型指向父类的实例。    
 B.prototype=new A();
  // B 的一个实例小f同时拥有B类的私有属性，同时想要继承A上私有的属性和原型上的属性
 let f=new B();
-console.log(f)
+//======>2、call 继承：call继承就是把父类当成普通函数执行，
+//然后把父类中的this替换成子类的实例的this。call 继承有一个缺点就是只能继承父类中的私有属性，原型上的公有属性都继承不到
+
+function A(){
+   this.x=100;
+} 
+A.prototype={
+   constructor:A,
+   getX:function(){
+      console.log("getX")
+   }
+}
+function B(){
+   A.call(this);//这里就是把A当做普通函数执行，这里的this就是当前小f，或是其它的实例。
+   this.y=200;
+}
+let f=new B();
+
+//=====> 3、寄生组合继承
+  
+function A(){
+    this.x=100
+}  
+
+A.prototype={
+   constructor:A,
+   getX:function(){
+      console.log("x");
+   }
+}
+
+function B(){
+   this.y=200
+} 
+
+// 要想让B类继承A类中的私有属性，我们可以用call
+// 寄生继承第一版
+function B(){
+   A.call(this);
+   this.y=200;
+}
+B.prototype=A.prototype;
+//但是直接B.prototype=A.prototype 的时候有一个缺点，就是我们可以通过B.prototype
+//直接可以更改掉A的原型上的方法，这样的话会影响A的实例。所以做下改良
+//Object.create(obj),这个方法就是创建一个空对象，然后这个空对象上的__proto__指向参数的原型。
+B.prototype=Object.create(A.prototype)
 
 
+原型继承和call继承以及寄生组合继承的有缺点？
+> 原型继承，子类B的prototype等于f，（A父类的实例）， 这样子类B继承过来的A的私有属性和公有属性都成了公有属性.2、子类容易改变父类原型上的方法，通过B.prototype.x=300,就会把A的私有属性改变，通过B.prototype.__proto__就能改变A的原型上的方法。
+
+> call继承，主要是在子类的函数中，把父类当成一个函数执行，这样的话，只能继承父类中的私有属性，原型上的属性和方法都继承不到
+
+> 寄生组合继承就是结合了call，继承了父类的私有属性，同时用Object.create(父类的原型)，重新创建了一个空对象，让这个空对象的__proto__指向父类的原型，这样子就更好点。
+
+> es6 的类：
+
+class Fn { //Fn 是类名，没有小括号， 
+    constructor(name){ //constructor 代表的是当前类
+       // constructor里面的 代表的就是私有属性
+       this.name=name;
+    } 
+    // 这个代表的是原型上的方法，由于es6还不是很完善，所以这里是原型上的方法，不能是原型上
+    //的属性，如果要想写原型上的属性，可以单写。
+    getX(){
+       console.log("x");
+    } 
+    static AA (){ // 把fn当做普通的函数，这个函数上的属性方法，但是es6不完善，这里也只能               //是方法,不能是属性
+
+    }
+}
+Fn.prototype.x=100;
+Fn.name="lili";
+
+
+
+
+function fn(n,m){
+   this.x=n;
+   this.y=m;
+} 
+
+fn.prototype.getX=function(){
+  console.log("x");
+} 
+fn.AA=function(){
+   console.log("AA")
+} 
+fn.name="lili";
+
+> es6 的继承
+
+class A {
+   constructor(x){
+      this.x=x
+   }
+   getX(){
+      console.log("A")
+   } 
+   static AA(){
+      console.log("把普通函数当成一个对象的方法属性")
+   }
+} 
+// B类继承A类
+
+class B extends A{ //extends 相当于实现了继承
+   constructor(y){
+     super();//类似于call继承，相当于把A类的constructor 执行，并且把里面的this换成B类实///例
+      this.y=y
+   }
+   getY(){
+      console.log("getY")
+   }
+   
+} 
+let f=new B();
+
+
+11、js中有一个原生的insertBefore方法，目的是把新元素插入到目标元素之前，现在要实现一个insertAfter方法，目的是把新元素插入到目标元素之后。
+
+
+// 插入到A元素之后，原理就是插入到A元素的下个兄弟元素之前，如果没有下个兄弟元素，就是插入到父容器的后面。
+/*
+ * 参数说明：
+   newElement 代表的是新节点
+   oldElement代表的是目标元素
+ * 
+ *  */
+
+``` 
+function insertAfter(newElement,oldElement){
+      let nextNode=oldElement.nextElementSibling;
+      let par=oldElement.parentNode;
+      if(nextNode){
+         par.insertBefore(newElement,nextNode);
+      }else{
+        par.appendChild(newElement);
+      }
+       
+} 
+
+// 创建一个p元素
+var op=document.createElement("p");
+op.innerText="p";
+var od1=document.getElementById("d1");
+insertAfter(op,od1);
+```
+
+12、一个英文、字母、汉字的字符串，给英文单词之前加上空格

@@ -4,15 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>事件兼容性处理</title>
     <style>
-    *{margin:0;padding:0;}
-    .box{width:100px;height:100px;background:green;}
+    #box1{
+        width:100px;
+        height:100px;
+        background:green;
+    }
     </style>
 </head>
 <body>
-    <div class="box"></div>
+     <div id="box1"></div>
 </body>
 </html>
 <script>
+    /*
+      事件对象，高版本的会传进来一个事件对象e，低版本的浏览器不会传，会有一个window.event对象。
+      e.target 是高版本的，低版本的是window.event.srcElement
+    */
+  box1.onclick=function(e){
+      if(!e){
+        e=window.event;
+        //事件源
+        e.target=e.srcElement;
+        // 低版本的pageX没有，pageY也没有
+        e.pageX=e.clientX+document.documentElement.offsetLeft||document.body.offsetLeft;
+        e.pageY=e.clentY+document.documentElement.offsetTop||document.body.offsetTop;
+        // 阻止默认行为
+        e.preventDefault=e.returnValue=false;
+        // 阻止冒泡
+        e.stopPropagation=function(){
+            e.cancelBubble=true;
+        }
+
+      }
+      
+      
+     
+  }
+
 </script>

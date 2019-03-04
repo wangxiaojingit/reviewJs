@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件传播</title>
+    <style>
+    *{margin:0;padding:0;}
+    .outer{
+        width:300px;
+        height:300px;
+        background:green;
+    }
+    .inner{
+        width:100px;
+        height:100px;
+        background:red;
+    }
+    </style>
+</head>
+<body>
+    <div class="outer" id="outer">
+        <div class="inner" id="inner"></div>       
+    </div>
+</body>
+</html>
+<script>
+// 事件传播：点击当前元素，触发当前元素的事件行为，而且还会触发它的祖先元素的相关事件行为。
+// 事件行为的阶段：1、事件捕获，当触发事件之后，首先是按照页面的结构，从上到下寻找事件源，然后记录这个层层路线(捕获)，2、目标阶段，触发事件源绑定的事件。3、事件传播，触发所有的祖先级事件，如果祖先绑定这个方法，就执行，如果没绑定就继续往上走。
+
+document.body.onclick=function(ev){
+  console.log("body")
+}
+inner.onclick=function(){
+    console.log("inner")
+}
+outer.onclick=function(){
+    console.log("outer")
+}
+
+// 二级dom事件,第三个参数false 的时候代表的是在冒泡阶段执行，如果第三个参数为true的时候，就是在捕获阶段开始。
+outer.addEventListener("click",function(){
+    console.log("outer")
+},false)
+
+//mouseover、mouseout 和mouseenter、mouseleave  的区别
+//当鼠标滑过outer的时候，首先触发outer的onmouseover，然后触发outer的父级的相同事件，但是body等祖先级元素没有绑定，所以不触发。当从outer 进入到inner的时候，首先是先触发outer的onmouseleave 事件，然后再触发outer的祖先级的onmouseleave事件（没绑定），然后因为进入到了inner，触发inner的onmouseover事件，由于事件传播，触发祖先的事件，outer的onmouseover body的onmouseover等事件。
+//onmouoseenter 和onmousemove的区别，就是当从父盒子outer 进入到inner的时候，只会触发inner的onmouseenter事件，不会触发outer的onmouseleave，同时也不会触发事件传播。
+// inner.onmouseover=function(){
+//     console.log("inner over")
+// }
+
+// inner.onmouseout=function(){
+//     console.log("inner out")
+// }
+// outer.onmouseover=function(){
+//     console.log("outer over")
+// }
+// outer.onmouseout=function(){
+//     console.log("outer leave")
+// }
+
+
+inner.onmouseenter=function(){
+    console.log("inner enter")
+}
+
+inner.onmouseleave=function(){
+    console.log("inner leave")
+}
+outer.onmouseenter=function(){
+    console.log("outer enter")
+}
+outer.onmouseleave=function(){
+    console.log("outer leave")
+}
+</script>

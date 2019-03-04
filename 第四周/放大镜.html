@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜</title>
+    <style>
+        *{margin:0;padding:0;}
+        .bigbox{
+            width:300px;
+            height:300px;
+            margin:150px auto;
+        }
+        .smallbox{
+            width:100%;
+            height:100%;
+            overflow:hidden;
+            position:relative;
+
+        }
+        .smallbox>img{
+            display:block;
+            width:100%;
+        }
+        .mark{
+            width:100px;
+            height:100px;
+            background:rgba(0,0,0,.3);
+            position:absolute;
+            left:0;
+            top:0;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="bigbox">
+       <div class="smallbox">
+           <img src="1.jpg" alt="">
+           <div class="mark"></div>
+       </div>
+       <div class="bigbox"> </div>
+    </div>
+</body>
+</html>
+<script>
+// 放大镜效果：当鼠标滑到商品缩列图的时候，会出现一个mark的小透明块，鼠标移动的时候，小mark块也跟着移动，(移动的鼠标始终在小方块内). mark块在缩略图中移动到哪，右边的大图就会显示那个特定部分。
+
+
+</script>

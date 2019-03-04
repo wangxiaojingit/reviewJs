@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      *{margin:0;padding:0;}
+      div{
+          width:200px;
+          height:500px;
+          background:green;
+          margin-bottom:100px;
+      }
+    </style>
+</head>
+<body>
+    <input type="text" id="input1">
+    <a href="#box1"> box1</a>
+    <a href="#box2"> box2</a>
+    <a href="#box3"> box3</a>
+    <a href="#box4"> box4</a>
+    
+    <div id="box1">box1</div>
+    <div id="box2">box2</div>
+    <div id="box3">box3</div>
+    <div id="box4">box4</div>
+    <a href="#"> 回到顶部</a>
+
+
+</body>
+</html>
+<script>
+//   a 链接的href如果写id的时候，点击跳转会自动跳转到那个id元素的位置，如果是#的话就会跳转到顶部
+// a 的默认行为：点击的时候会跳转到另一个地址；input的默认行为，就是可以在input框里面输入文字
+
+// 需求：当input框中输入6个字之后，就不能再继续输入,超过六个字符之后，入Del：46，Backspace：8，enter：13，方向键：下40，上：38，左37，右39；剩下的不能输入
+// 阻止默认行为，return false  或者e.preventDefault?e.preventDefault():e.returnValue=false; 都可以
+
+var input1=document.getElementById("input1");
+input1.onkeydown=function(e){
+   var e=e||window.event;
+   var value=this.value.replace(/^\s+| \s+$/g,"");
+   if(value.length>=6){
+       if(!/^46|8|13|40|38|37|39$/.test(e.keyCode)){
+         //  return false; 
+         e.preventDefault?e.preventDefault():e.returnValue=false;
+       }
+   }
+
+}
+
+
+</script>

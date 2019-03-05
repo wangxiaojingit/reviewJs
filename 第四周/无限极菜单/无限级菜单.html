@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无限极菜单</title>
+    <style>
+    *{margin:0;padding:0;}
+    .wrapper{
+        margin:100px auto;
+    }
+    ul,ol{list-style:none;}
+    .box>li{
+        position:relative;
+        text-indent:30px;
+        
+    }
+    .box ul{
+        display:none;
+    }
+    .box li{
+        position:relative;
+    }
+    .plus,.reduce{
+      width:16px;
+      height:16px;
+      position:absolute;
+      left:0;
+      top:0;
+      text-indent:0;
+    }
+
+    .plus:after{
+        display:block;
+        content:"+";
+        font-size:14px;
+        color:#fff;
+        width:16px;
+        height:16px;
+        line-height:16px;
+        background:green;
+    }
+    .reduce:after{
+        display:block;
+        content:"-";
+        font-size:14px;
+        color:#fff;
+        width:16px;
+        height:16px;
+        line-height:16px;
+        background:gold;
+    }
+    .leval2{
+        margin-left:30px;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <ul class="box">
+            <li>
+                <em></em>
+                <span>夏装</span>
+                <ul>
+                    <li>
+                        <em></em>
+                        <span>上衣</span>
+                        <ul>
+                            <li>白色T恤</li>
+                            <li>防晒衣</li>
+                        </ul>
+                    </li>
+                    <li>
+                         <em></em>
+                         <span>裙子</span>
+                         <ul>
+                            <li>
+                              <em></em>
+                              <span>黄色小花裙</span>
+                            </li>
+                            <li>
+                                <em></em>
+                                <span>典雅蓝色贵族裙</span>
+                            </li>
+      
+                         </ul>
+                    </li>
+    
+                </ul>
+            </li>
+            <li>
+                    <em></em>
+                    <span>夏装</span>
+                    <ul>
+                        <li>
+                            <em></em>
+                            <span>上衣</span>
+                            <ul>
+                                <li>白色T恤</li>
+                                <li>防晒衣</li>
+                            </ul>
+                        </li>
+                        <li>
+                             <em></em>
+                             <span>裙子</span>
+                             <ul>
+                                <li>
+                                  <em></em>
+                                  <span>黄色小花裙</span>
+                                </li>
+                                <li>
+                                    <em></em>
+                                    <span>典雅蓝色贵族裙</span>
+                                </li>
+          
+                             </ul>
+                        </li>
+        
+                    </ul>
+            </li>
+            <li>
+                <em></em>
+                <span>夏装</span>
+                <ul>
+                    <li>
+                        <em></em>
+                        <span>上衣</span>
+                        <ul>
+                            <li>白色T恤</li>
+                            <li>防晒衣</li>
+                        </ul>
+                    </li>
+                    <li>
+                            <em></em>
+                            <span>裙子</span>
+                            <ul>
+                            <li>
+                                <em></em>
+                                <span>黄色小花裙</span>
+                            </li>
+                            <li>
+                                <em></em>
+                                <span>典雅蓝色贵族裙</span>
+                            </li>
+        
+                            </ul>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script>
+ $(function(){
+     //把第一个ul后面的ul都向后面进行缩进，定一个常量d=30;
+     
+     $(".box").children("li").children("ul").css("margin-left","30px");
+     $(".box").children("li").children("ul").children("li").children("ul").css("margin-left","40px");
+
+     //遍历$(".box")下面的li，如果这个li里面有ul，说明这个层级前面应该放+
+     $(".box li").each(function(item,index) {
+        var length= $(this).children("ul").length;
+        if(length){
+           $(this).children("em").addClass("plus");
+        }
+         
+     });
+  
+     $(".wrapper").click(function(e){
+        // if(e.target.tagName=="SPAN"){
+        //     e.target=$(e.target).parent("li").children("em");
+        // }
+       if(e.target.tagName=="EM"){
+          
+          if( $(e.target).hasClass("plus")){
+            $(e.target).removeClass("plus").addClass("reduce");
+            $(e.target).parent("li").children("ul").toggle();
+
+          }else if( $(e.target).hasClass("reduce")){
+            $(e.target).removeClass("reduce").addClass("plus");
+            $(e.target).parent("li").children("ul").toggle();
+            
+
+          }
+       }
+     })
+ })
+</script>

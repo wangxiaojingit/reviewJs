@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鼠标跟随</title>
+    <style>
+    *{margin:0;padding:0;}
+    ul,ol{list-style:none;}
+    .wrapper{
+       width:326px;
+       height:102px;
+       position:relative;
+    }
+    ul{
+        height:102px;
+    }
+    .wrapper li{
+        width:100px;
+        height:100px;
+        border:1px solid #000;
+        overflow:hidden;
+        float:left;
+        margin-right:10px;
+    }
+    .wrapper li>img{
+        display:block;
+        width:100%;
+
+    }
+    ul>li:last-child{
+       margin-right:0;
+    }
+    .mark{
+        width:200px;
+        height:200px;
+        position:absolute;
+        left:0;
+        top:0;
+       
+    }
+    .mark>img{
+        width:100%;
+        display:block;
+    }
+    </style>
+</head>
+<body>
+    <section class="wrapper">
+       <ul class="lists">
+           <li><img src="images/1.jpg" alt=""></li>
+           <li><img src="images/2.jpg" alt=""></li>
+           <li><img src="images/3.jpg" alt=""></li>
+       </ul>
+       <!-- <div class="mark">
+           <img src="images/1.jpg" alt="">
+       </div> -->
+    </section>
+</body>
+</html>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script>
+    // 鼠标跟随效果原理：1、鼠标移入的时候动态的创建一个大图，大图的left值和top值就是鼠标的pageX-容器盒子的offset().left;如果鼠标移除之后，就把mark大图移除。
+$(function(){
+    var $mark=null;
+    $(".lists>li").on("mouseover",function(e){
+        var dataSrc=$(this).children("img").attr("src");
+       //1、当鼠标滑上li的时候，就动态创建一个大图
+       if(!$mark){
+            $mark=`<div class="mark">
+            <img src=${dataSrc} alt="">
+            </div>`;
+           $(".wrapper").append($mark);
+       }
+       
+
+
+    })
+
+    $(".lists>li").on("mouseout",function(){
+        //鼠标离开之后，就移除mark
+        $(".mark").remove();
+        $mark=null;
+    })
+
+    $(".lists>li").on("mousemove",function(e){
+         var pageX=e.pageX;
+         var pageY=e.pageY;
+         var boxLeft=pageX-$(".wrapper").offset().left+20;
+         var boxTop=pageY-$(".wrapper").offset().top+20;
+         $(".mark").css({"left":boxLeft+"px","top":boxTop+"px"});
+         
+    })
+
+})
+</script>

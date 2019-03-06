@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽</title>
+    <style>
+    *{
+        margin:0;padding:0;
+    }
+    html,body{
+        height:100%;
+    }
+    .dialog{
+        width:100%;
+        height:100%;
+        position:fixed;
+        left:0;
+        top:0;
+        background:rgba(0,0,0,.3);
+    } 
+    .mainbox{
+        width:300px;
+        height:300px;
+        background:#fff;
+        position:fixed;
+        left:50%;
+        top:50%;
+        margin-left:-150px;
+        margin-right:-150px;
+        
+    }
+    .title{
+        height:30px;
+        line-height:30px;
+        text-align:center;
+        border-bottom:1px solid green;
+
+    }
+    </style>
+</head>
+<body>
+    <div class="dialog">
+        <div class="mainbox">
+            <h3 class="title">珠峰培训</h3>
+            <div class="content"></div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="../jquery/jquery-3.3.1.min.js"></script>
+<script>
+  $(function(){
+      // 当鼠标按上h3的时候，就可以开始拖拽了(onmousedown)，然后移动的时候，那个块就会跟着鼠标的移动而移动，如果鼠标抬起(onmouseup),就不能拖拽移除掉相关事件
+       var downstart=function(e){
+           console.log("按上了");
+           //记录当前的刚开始的坐标
+           this.clientX=e.clientX;
+           this.clientY=e.clientY;
+           this.startLeft=parseFloat($(this).parent().css("left"));
+           this.startTop=parseFloat($(this).parent().css("top"));
+           $(".title").on("mousemove",downmove);
+       }  
+
+       var downmove=function(e){
+           
+            this.endClientX=e.clientX;
+            this.endClientY=e.clientY;
+            // 鼠标移动的距离
+            var x_d=this.endClientX-this.clientX;
+            var y_d=this.endClientY-this.clientY;
+            var curX=this.startLeft+x_d;
+            var curY=this.startTop+y_d;
+            $(this).parent().css({"left":curX+"px","top":curY+"px"})
+
+
+       }
+       $(".title").on("mousedown",downstart);
+       $(".title").on("mouseup",downup);
+
+       
+       var  downup=function(e){
+        $(this).parent().off("mousemove",downmove);
+       }      
+
+
+       
+  })
+</script>
